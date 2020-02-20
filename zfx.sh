@@ -347,7 +347,7 @@ function library0 (){
 echo -e "\n\n\n\n\n"
 echo -e " 1   暂无\n"
 sleep 0.016
-echo -e " 2   atilo\n"
+echo -e " 2   暂无\n"
 sleep 0.016
 echo -e " 3   annie视频下载工具\n"
 sleep 0.016
