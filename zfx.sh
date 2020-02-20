@@ -372,23 +372,9 @@ case $library in
 1 )
     hint ; echo -e "暂时没有命令" ; hint
     library0 ; library1 ;;
-#	if test -e $PREFIX/bin/wget ; then
-#		:
-#	else
-#		pkg in -y wget
-#	fi
-#	i=0
-#	while [ $((i++)) -le 999 ]
-#	do
-#		wget -O /dev/null http://dlied5.myapp.com/myapp/1104466820/sgame/2017_com.tencent.tmgp.sgame_h8218_1.43.1.15_fc9dc4.apk
-#	done ;;
 2 )
 	sleep 1
-	hint ; echo -e "atilo" ; hint
-	pkg install -y wget
-	wget https://one.funs.ml/Termux/atilo
-	chmod +x atilo
-	sh atilo
+	hint ; echo -e "没有" ; hint
 	library0 ; library1 ;;
 3 )
 	sleep 1
