@@ -32,7 +32,7 @@ echo -e " 5   其他工具\n"
 sleep 0.016
 echo -e " 6   编程环境配置\n"
 sleep 0.016
-echo -e " 7   超级大宝贝工具\n"
+echo -e " 7   常用工具\n"
 sleep 0.016
 echo -e "99   充软妹币\n"
 sleep 0.016
@@ -354,7 +354,7 @@ echo -e " 5   命令行版百度云\n"
 sleep 0.016
 echo -e " 6   qrcode二维码\n"
 sleep 0.016
-echo -e " 7   hexo博客\n"
+echo -e " 7   Toolss工具箱\n"
 sleep 0.016
 echo -e " 8   bilibili挂机脚本\n"
 sleep 0.016
@@ -450,19 +450,23 @@ case $library in
 	library0 ; library1 ;;
 6 )
 	sleep 1
-	hint ; echo -e "项目地址：https://github.com/sylnsfar/qrcode" ; hint
+	hint ; echo -e "二维码！" ; hint
 	sleep 3
 	pkg install -y python
 	pip install qrcode
 	library0 ; library1 ;;
 7 )
 	sleep 1
-	hint ; echo -e "请阅读小白教程，自行完成博客的搭建\n教程地址：https://nibazshab.github.io/post/3" ; hint
+	hint ; echo -e "Toolss工具箱" ; hint
 	sleep 3
+	pkg install -y wget
+	pkg install -y python
+	wget -O toolss.py https://zfxlyn.github.io/termux/Toolss.py
+	python toolss.py
 	library0 ; library1 ;;
 8 )
 	sleep 1
-	hint ; echo -e "使用方法：输入 ~/bilibili\n安装指令感谢 coolapk@大编一号\n项目地址：https://github.com/lkeme/BiliHelper" ; hint
+	hint ; echo -e "bilibili安装指令" ; hint
 	sleep 3
 	pkg install -y curl
 	pkg install -y php
