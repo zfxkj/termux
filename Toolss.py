@@ -51,7 +51,7 @@ while loop:
     menu()
     what = input("#: ")
     if what == "00":
-        print("================================")
+        print("================================ ")
         print("This will install: nmap, hydra, sqlmap, metasploit, ngrok, angryFuzzer, red_hawk, weeman, IPGeoLocation, cupp, instahack, TwitterSniper, Hash-Buster, D-TECT, routersploit and viSQL with one click.")
         print("----------------")
         hm = input("[?] Do you want to continue? (y/n): ")
