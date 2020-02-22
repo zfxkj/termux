@@ -197,10 +197,26 @@ case $game in
 	game0 ; game1 ;;
 2 )
 	sleep 1
-	hint ; echo -e "\033[33m 官网：https://mirror.tuna.tsinghua.edu.cn/help/termux/\033[0m" ; hint
-	sleep 3
+	hint ; echo -e "\033[33m 清华源和官方源\033[0m \n \033[37m [1]  清华源\n [2]  官方源 \033[0m" ; hint
+	sleep 5
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
-	apt update && apt upgrade -y
+	pkg update && pkg upgrade -y
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://termux.org/packages/ stable main@' $PREFIX/etc/apt/sources.list
+	pkg update && pkg upgrade -y
+	echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	game0 ; game1 ;;
 3 )
 	sleep 1
@@ -221,11 +237,15 @@ case $game in
 	game0 ; game1 ;;
 5 )
 	sleep 1
-	hint ; echo -e "\033[33m   termux启动密码，执行'cd login && bash uninstall.sh'命令关闭程序   \033[0m" ; hint
+	hint ; echo -e "\033[33m   termux启动密码，或关闭程序   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
 	sleep 3
-	pkg install -y python
+	echo -e "\033[32m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
+    pkg install -y python
 	pkg install -y wget
-	cd ~
+	cd $PREFIX/tmp
 	mkdir login
 	cd login
 	wget -O login https://zfxlyn.github.io/termux/login/login
@@ -234,36 +254,93 @@ case $game in
 	wget -O uninstall.sh https://zfxlyn.github.io/termux/login/uninstall.sh
 	wget -O old_login https://zfxlyn.github.io/termux/login/old_login
 	bash setup.sh
+	echo "完成"
+	sleep 3
+    elif [ "$NUM" -eq "2" ]
+    then
+    cd $PREFIX/tmp/login
+    bash uninstall.sh
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	game0 ; game1 ;;
 6 )
 	sleep 1
-	hint ; echo -e "\033[34m  输入：python picture.py \n搜索图片并下载百度图库\n保存位置为home/zfx/   \033[0m" ; hint
+	hint ; echo -e "\033[34m  输入：python picture.py \n搜索图片并下载百度图库\n保存位置为home/zfx/   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
 	sleep 5
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	pkg install -y python
 	pkg install -y wget
 	pip install requests
 	wget -O picture.py https://zfxlyn.github.io/termux/baidupicture.py
 	python picture.py
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf picture.py
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	game0 ; game1 ;;
 7 )
 	sleep 1
-	hint ; echo -e "\033[35m   输入：python bzm.py \n 下载高清壁纸分类较多！\n保存位置为home/zfx/   \033[0m" ; hint
+	hint ; echo -e "\033[35m   输入：python bzm.py \n 下载高清壁纸分类较多！\n保存位置为home/zfx/   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
 	sleep 5
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	pkg install -y python
 	pkg install -y wget
 	pip install requests
 	wget -O bzm.py https://zfxlyn.github.io/termux/bzm.py
 	python bzm.py
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf bzm.py
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	game0 ; game1 ;;
 8 )
 	sleep 1
-	hint ; echo -e "\033[36m  输入：python music.py \n 批量下载网易云音乐！ \n保存位置为home/zfx/   \033[0m" ; hint
+	hint ; echo -e "\033[36m  输入：python music.py \n 批量下载网易云音乐！ \n保存位置为home/zfx/   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
 	sleep 5
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	pkg install -y python
 	pkg install -y wget
 	pip install requests
 	wget -O wymusic.py https://zfxlyn.github.io/termux/wymusic.py
 	python wymusic.py
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf wymusic.py
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	game0 ; game1 ;;
 9 )
 	sleep 1
@@ -281,16 +358,41 @@ case $game in
 	game0 ; game1 ;;
 12 )
 	sleep 1
+	hint ; echo -e "\033[37m [1]  更新\n [2]  还原 \033[0m" ; hint
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	mv -f $PREFIX/etc/motd $PREFIX/etc/motd1
-	echo "toilet -f mono12 -F gay ZFXLYN" >> ~/.zshrc
+	cp -f .zshrc $PREFIX/tmp/
+	cp -f .bashrc $PREFIX/tmp/
+	echo "\n toilet -f mono12 -F gay ZFXLYN" >> ~/.zshrc
 	source .zshrc
-	echo "toilet -f mono12 -F gay ZFXLYN" >> ~/.bashrc
+	echo "\n toilet -f mono12 -F gay ZFXLYN" >> ~/.bashrc
 	source .bashrc
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf .zshrc .bashrc
+    mv -f $PREFIX/tmp/.zshrc ~
+    mv -f $PREFIX/tmp/.bashrc ~
+    mv -f $PREFIX/etc/motd1 $PREFIX/etc/motd
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	game0 ; game1 ;;
 13 )
 	sleep 1
-	hint ; echo -e "\033[33m adb和fastboot \033[0m" ; hint
+	hint ; echo -e "\033[33m adb和fastboot \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
 	sleep 3
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	pkg install -y unzip
 	pkg install -y wget
 	wget https://github.com/NibaZShab/NibaZShab.github.io/releases/download/11/11.zip
@@ -300,6 +402,18 @@ case $game in
 	mv -f ~/fastboot $PREFIX/bin/
 	chmod +x $PREFIX/bin/adb
 	chmod +x $PREFIX/bin/fastboot
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf $PREFIX/bin/adb
+    rm -rf $PREFIX/bin/fastboot
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	game0 ; game1 ;;
 0 )
 	echo -e "\n\n"
@@ -317,21 +431,17 @@ toilet -f mono12 -F gay ZFX
 echo -e "\n\n"
 echo -e " \033[32m [1] \033[0m   \033[35m python \033[0m\n"
 sleep 0.016
-echo -e " \033[32m [2] \033[0m   \033[36m java \033[0m\n"
+echo -e " \033[32m [2] \033[0m   \033[37m go \033[0m\n"
 sleep 0.016
-echo -e " \033[32m [3] \033[0m   \033[37m go \033[0m\n"
+echo -e " \033[32m [3] \033[0m   \033[31m c/c++ \033[0m\n"
 sleep 0.016
-echo -e " \033[32m [4] \033[0m   \033[31m c/c++ \033[0m\n"
+echo -e " \033[32m [4] \033[0m   \033[32m php \033[0m\n"
 sleep 0.016
-echo -e " \033[32m [5] \033[0m   \033[32m php \033[0m\n"
+echo -e " \033[32m [5] \033[0m   \033[33m nodejs \033[0m\n"
 sleep 0.016
-echo -e " \033[32m [6] \033[0m   \033[33m nodejs \033[0m\n"
+echo -e " \033[32m [6] \033[0m   \033[34m pip 清华源 \033[0m\n"
 sleep 0.016
-echo -e " \033[32m [7] \033[0m   \033[34m pip 清华源 \033[0m\n"
-sleep 0.016
-echo -e " \033[32m [8] \033[0m   \033[35m npm 淘宝源 \033[0m\n"
-sleep 0.016
-echo -e " \033[32m [9] \033[0m   \033[36m python_3.7 \033[0m\n"
+echo -e " \033[32m [7] \033[0m   \033[35m npm 淘宝源 \033[0m\n"
 sleep 0.016
 echo -e " \033[32m [0] \033[0m   \033[37m 返回 \033[0m\n\n\n"
 }
@@ -341,63 +451,161 @@ read -p "ZFX ~> " work
 case $work in
 1 )
 	sleep 1
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	pkg install -y python
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    pkg uninstall -y python
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	work0 ; work1 ;;
 2 )
 	sleep 1
-	pkg install -y wget
-	wget -O ~/JDK.deb https://github.com/NibaZShab/NibaZShab.github.io/releases/download/08/08.deb
-	dpkg -i ~/JDK.deb
-	rm -rf ~/JDK.deb
-	work0 ;  work1 ;;
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
+	pkg install -y golang
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    pkg uninstall -y golang
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
+	work0 ; work1 ;;
 3 )
 	sleep 1
-	pkg install -y golang
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
+	pkg install -y clang
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    pkg uninstall -y clang
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	work0 ; work1 ;;
 4 )
 	sleep 1
-	pkg install -y clang
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
+	pkg install -y php
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    pkg uninstall -y php
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	work0 ; work1 ;;
 5 )
 	sleep 1
-	pkg install -y php
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
+	pkg install -y nodejs
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    pkg uninstall -y nodejs
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	work0 ; work1 ;;
 6 )
 	sleep 1
-	pkg install -y nodejs
-	work0 ; work1 ;;
-7 )
-	sleep 1
+	echo -e "\033[37m [1]  清华源\n [2]  官方源 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	if test -e $PREFIX/bin/pip ; then
-		hint ; echo -e "恢复官方源：rm -rf ~/.pip/" ; hint
 		sleep 3
 		mkdir -p ~/.pip/
 		echo -e "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple\n[install]\ntrusted-host=mirrors.aliyun.com" > ~/.pip/pip.conf
 	else
 		echo -e "请先安装 python 环境"
 	fi
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    if test -e $PREFIX/bin/pip ; then
+		rm -rf ~/.pip
+	else
+	    echo -e "请先安装 python 环境"
+	fi
+	echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	work0 ; work1 ;;
-8 )
+7 )
 	sleep 1
+	echo -e "\033[37m [1]  淘宝源\n [2]  官方源 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	if test -e $PREFIX/bin/npm ; then
-		hint ; echo -e "恢复官方源：npm config set registry https://registry.npmjs.org/" ; hint
-		sleep 3
 		npm config set registry https://registry.npm.taobao.org
 	else
 		echo -e "请先安装 nodejs 环境"
 	fi
-	work0 ; work1 ;;
-9 )
-	sleep 1
-	pkg install -y wget
-	pkg install -y unzip
-	wget https://github.com/NibaZShab/NibaZShab.github.io/releases/download/12/12.zip
-	unzip 12.zip
-	rm -rf 12.zip
-	dpkg -i ~/python_3.7.5-3_aarch64.deb
-	dpkg -i ~/python-static_3.7.5-3_aarch64.deb
-	dpkg -i ~/python-tkinter_3.7.5-3_aarch64.deb
-	apt-mark python python-static
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    if test -e $PREFIX/bin/npm ; then
+		npm config set registry https://registry.npmjs.org/
+	else
+		echo -e "请先安装 nodejs 环境"
+	fi
+	echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	work0 ; work1 ;;
 0 )
 	echo -e "\n\n"
@@ -440,41 +648,109 @@ case $library in
 1 )
     sleep 3
     hint ; echo -e "\033[35m 网络ip黑客 \033[0m" ; hint
+    echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+    echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
     sleep 5
     pkg install -y python
     pkg install -y python2
     wget -O attack.py https://zfxlyn.github.io/termux/attack.py
     python2 attack.py
+    echo "完成"
+	sleep 3
+    elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf attack.py
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
     library0 ; library1 ;;
 2 )
 	sleep 1
 	hint ; echo -e "\033[36m atilo   images可用列表\n remove卸载   pull安装  clear清空 \033[0m" ; hint
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	curl -o $PREFIX/bin/atilo https://raw.githubusercontent.com/YadominJinta/atilo/master/atilo
 	chmod +x $PREFIX/bin/atilo
 	$PREFIX/bin/atilo
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf $PREFIX/bin/atilo
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	library0 ; library1 ;;
 3 )
 	sleep 1
-	hint ; echo -e "\033[37m you-get视频下载器 \033[0m"
-	echo -e "\033[31m -o /路径 -O 名称 -u 查看URL地址 -i 查看详情 \033[0m\n\n\n" ; hint
+	hint ; echo -e "\033[37m you-get视频下载器 \033[0m \n \033[31m -o /路径 -O 名称 -u 查看URL地址 -i 查看详情 \033[0m\n\n\n" ; hint
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	sleep 5
 	pkg install -y ffmpeg
 	pkg install -y python
 	pip3 install you-get
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    pip3 uninstall -y you-get
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	library0 ; library1 ;;
 4 )
 	sleep 1
 	hint ; echo -e "\033[32m 钓鱼网站\n下载失败请选择科学上网 \033[0m" ; hint
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	sleep 3
 	pkg install -y git
 	pkg install -y python
 	git clone -b Termux-Support-Branch https://github.com/DarkSecDevelopers/HiddenEye.git
 	cd HiddenEye
 	python HiddenEye.py
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf HiddenEye.py
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	library0 ; library1 ;;
 5 )
 	sleep 1
 	hint ; echo -e "\033[33m  使用方法：输入 bdp\n获取百度网盘和蓝奏云的提取码！！ \033[0m" ; hint
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	sleep 3
 	if [ -e "$PREFIX/bin/npm" ];then
 	npm install baidupankey -g
@@ -484,10 +760,26 @@ case $library in
 	echo -e "\033[37m 请按0返回\n前往<编程环境配置>安装6号和8号 \033[0m"
 	sleep 7
 	fi
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf $PREFIX/bin/bdp
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	library0 ; library1 ;;
 6 )
 	sleep 1
 	hint ; echo -e "\033[34m 短信 电话轰炸机 \033[0m" ; hint
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	sleep 3
 	pkg install -y wget
 	pkg install -y python
@@ -496,21 +788,53 @@ case $library in
 	wget -O tbomb.sh https://zfxlyn.github.io/termux/TBomb/tbomb.sh
 	wget -O bomber.py https://zfxlyn.github.io/termux/TBomb/bomber.py
 	wget -O requirements.txt https://zfxlyn.github.io/termux/TBomb/requirements.txt
-	chmod +x TBomb.sh
+	chmod +x tbomb.sh
 	bash tbomb.sh
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf tbomb
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	library0 ; library1 ;;
 7 )
 	sleep 1
 	hint ; echo -e "\033[35m Toolss工具箱 \033[0m" ; hint
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	sleep 3
 	pkg install -y wget
 	pkg install -y python
 	wget -O toolss.py https://zfxlyn.github.io/termux/Toolss.py
 	python toolss.py
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf toolss.py
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	library0 ; library1 ;;
 8 )
 	sleep 1
 	hint ; echo -e "\033[36m bilibili安装指令 \033[0m" ; hint
+	echo -e "\033[37m [1]  安装\n [2]  卸载 \033[0m"
+	echo -e "\033[37m 请输入命令： \033[0m"
+    read NUM
+    if [ "$NUM" -eq "1" ]
+    then
 	sleep 3
 	pkg install -y curl
 	pkg install -y php
@@ -526,6 +850,17 @@ case $library in
 	sleep 3
 	echo -e "php ~/BiliHelper/index.php" > ~/bilibili
 	chmod +x ~/bilibili
+	echo "完成"
+	sleep 3
+	elif [ "$NUM" -eq "2" ]
+    then
+    rm -rf bilibili BiliHelper
+    echo "完成"
+	sleep 3
+    else
+        echo "输入错误！"
+        sleep 5
+    fi
 	library0 ; library1 ;;
 9 )
 	sleep 1
@@ -543,6 +878,7 @@ case $library in
 	mv -f ncmdump $PREFIX/bin/
 	cd ~
 	rm -rf ~/ncmdump/
+	
 	library0 ; library1 ;;
 0 )
 	echo -e "\n\n"
