@@ -3,8 +3,9 @@ import re
 import sys
 print("如果什么都不输入视为退出\n")
 url_name = input('请输入搜索文字:')
-if url_name == ""
+if url_name == "":
     sys.exit("您已退出！")
+
 html_url = f'https://image.baidu.com/search/index?tn=baiduimage&word={url_name}'
 html = requests.get(html_url).text
 tp = re.findall('"objURL":"(.*?)"', html)
