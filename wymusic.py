@@ -8,6 +8,7 @@ print("如果什么都不输入就视为退出")
 urlaq = input('请入链接：')
 if urlaq == "":
         sys.exit("您已退出！")
+        
 url_fg = 'https://music.163.com/playlist?id='
 id_fx = urlaq.split('=')[-1]
 url = url_fg + id_fx
