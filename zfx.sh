@@ -1,42 +1,38 @@
 #!/bin/bash
 #ZFX
 clear
+cd ~
+mkdir zfx/
 colorhint="\033[36;43;1m"
 colorend="\033[0m"
 prompt="\n————————————————————————————————————\n"
 function hint (){ echo -e "$prompt" ; }
 function logo (){
-if [ -e "../usr/bin/toilet" ];then
+if [ -e "$PREFIX/bin/toilet" ];then
 clear
-toilet -f mono12 -F gay ZFX
 else
 pkg install -y toilet
 pkg upgrade -y
 pkg update -y
 clear
-toilet -f mono12 -F gay ZFX
 fi
-
 }
 function home0 (){
-echo -e "\n\n"
-echo -e " 1   更换清华源\n"
+toilet -f mono12 -F gay ZFX
+echo -e "\n"
+echo -e "\033[32m [1] \033[0m   \033[34m 使用ZSH主题\033[0m\n"
 sleep 0.016
-echo -e " 2   扩建小键盘\n"
+echo -e "\033[32m [2] \033[0m   \033[35m 其他工具\033[0m\n"
 sleep 0.016
-echo -e " 3   获取储存权限\n"
+echo -e "\033[32m [3] \033[0m   \033[36m 编程环境配置\033[0m\n"
 sleep 0.016
-echo -e " 4   使用ZSH主题\n"
+echo -e "\033[32m [4] \033[0m   \033[37m 常用工具\033[0m\n"
 sleep 0.016
-echo -e " 5   其他工具\n"
+echo -e "\033[32m [5] \033[0m   \033[33m 更新\033[0m\n"
 sleep 0.016
-echo -e " 6   编程环境配置\n"
+echo -e "\033[32m [99] \033[0m   \033[31m 充软妹币\033[0m\n"
 sleep 0.016
-echo -e " 7   常用工具\n"
-sleep 0.016
-echo -e "99   充软妹币\n"
-sleep 0.016
-echo -e " 0   退出\n\n\n"
+echo -e "\033[32m [0] \033[0m   \033[32m 退出\033[0m\n\n\n"
 }
 function home1 (){
 cd ~
@@ -44,40 +40,29 @@ read -p "ZFX ~> " home
 case $home in
 1 )
 	sleep 1
-	hint ; echo -e "官网：https://mirror.tuna.tsinghua.edu.cn/help/termux/" ; hint
-	sleep 3
-	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
-	apt update && apt upgrade -y
-	home0 ; home1 ;;
-2 )
-	sleep 1
-	if test -d ~/.termux/ ; then
-		:
-	else
-		mkdir -p ~/.termux/
-	fi
-	echo -e "extra-keys = [['TAB','>','-','~','/','*','$'],['ESC','(','HOME','UP','END',')','PGUP'],['CTRL','[','LEFT','DOWN','RIGHT',']','PGDN']]" > ~/.termux/termux.properties
-	termux-reload-settings
-	home0 ; home1 ;;
-3 )
-	termux-setup-storage
-	home0 ; home1 ;;
-4 )
-	sleep 1
-	hint ; echo -e "第一个是选择颜色，第二个是选择字体！" ; hint
+	hint ; echo -e "\033[34m 第一个是选择颜色，第二个是选择字体！\033[0m" ; hint
 	sleep 7
 	pkg install -y curl
 	sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
 	home0 ; home1 ;;
-5 )
+2 )
 	echo -e "\n\n"
 	game0 ; game1 ;;
-6 )
+3 )
 	echo -e "\n\n"
 	work0 ; work1 ;;
-7 )
+4 )
 	echo -e "\n\n"
 	library0 ; library1 ;;
+5 )
+	hint ; echo -e "\033[37m 准备更新\033[0m\n" ; hint
+	pkg install -y wget
+	cd zfx/
+	wget -O zfx https://zfxlyn.github.io/termux/zfx.sh
+	mv -f zfx $PREFIX/bin
+	chmod +x $PREFIX/bin/zfx
+	exit
+	home0 ; home5 ;;
 99 )
 	sleep 1
 	read -p "请输入充值的软妹币额度：" a
@@ -86,62 +71,117 @@ case $home in
 		read -p "请输入支付密码："
 		echo -e "连接服务器..."
 		sleep 1
-		echo -e "已成功充入 $a 软妹币！"
+		echo -e "\033[31m已成功充入 $a 软妹币！\033[0m"
 		sleep 0.2s
-		echo -e "ZFX 已升级为 svip 版！" ;;
+		echo -e "\033[32mZFX 已升级为 svip 版！\033[0m" ;;
 	* )
+		sleep 1 
+		echo -e "\033[33m服务器请求错误！\033[0m\n" 
+		sleep 0.2s echo -e "\033[34m正在准备进攻... \033[0m\n" 
+		sleep 1 
+		echo -e "\033[35m网络检测中... \033[0m\n" 
 		sleep 1
-		echo -e "服务器请求错误！"
-		sleep 0.2s
-		echo -e "正在进攻..."
-		sleep 0.2s
-		echo -e "入侵成功！已抢夺对方全部软妹币！" ;;
+		echo -e "\033[36m检测完成\033[0m\n"
+		sleep 1
+		echo -e "\033[37m网站分析中...\033[0m\n"
+		sleep 3
+		echo -e "\033[31m分析完成\033[0m\n"
+		sleep 1
+		echo -e "\033[32m服务器漏洞扫描中...\033[0m\n"
+		sleep 5
+		echo -e "\033[33m扫描速度较慢请耐心等待…\033[0m\n"
+		sleep 5
+		echo -e "\033[36m服务器扫描完成共发现\033[31m9\033[0m处漏洞\033[0m\n"
+		sleep 2
+		echo -e "\033[37m服务器入侵中…\033[0m\n"
+		sleep 3
+		echo -e "\033[31m服务器入侵中  5% \033[0m\n"
+		sleep 5
+		echo -e "\033[32m服务器入侵中  9% \033[0m\n"
+		sleep 7
+		echo -e "\033[33m服务器入侵中  13% \033[0m\n"
+		sleep 1
+		echo -e "\033[34m服务器入侵中  17% \033[0m\n"
+		sleep 6
+		echo -e "\033[35m服务器入侵中  21% \033[0m\n"
+		sleep 9
+		echo -e "\033[36m服务器入侵中  27% \033[0m\n"
+		sleep 8
+		echo -e "\033[37m服务器入侵中  34% \033[0m\n"
+		sleep 2
+		echo -e "\033[31m服务器入侵中  39% \033[0m\n"
+		sleep 4
+		echo -e "\033[32m服务器入侵中  43% \033[0m\n"
+		sleep 6
+		echo -e "\033[33m服务器入侵中  46% \033[0m\n"
+		sleep 0.5s
+		echo -e "\033[34m服务器入侵中  52% \033[0m\n"
+		sleep 7
+		echo -e "\033[35m服务器入侵中  57% \033[0m\n"
+		sleep 6
+		echo -e "\033[36m服务器入侵中  60% \033[0m\n"
+		sleep 7
+		echo -e "\033[37m服务器入侵中  65% \033[0m\n"
+		sleep 2
+		echo -e "\033[31m服务器入侵中  68% \033[0m\n"
+		sleep 8
+		echo -e "\033[32m服务器入侵中  75% \033[0m\n"
+		sleep 6
+		echo -e "\033[33m服务器入侵中  81% \033[0m\n"
+		sleep 4
+		echo -e "\033[34m服务器入侵中  88% \033[0m\n"
+		sleep 1
+		echo -e "\033[35m服务器入侵中  93% \033[0m\n"
+		sleep 3
+		echo -e "\033[36m服务器入侵中  97% \033[0m\n"
+		sleep 5
+		echo -e "\033[37m服务器入侵中  100% \033[0m\n"
+		sleep 2
+		echo -e "\033[31m入侵成功！已抢夺对方全部软妹币！\033[0m\n" ;;
 	esac
 	exit ;;
-520 )
-	echo -e "\n\n"
-	hide0 ; hide1 ;;
 0 )
 	clear
-	cat $PREFIX/etc/motd
+	source .bashrc
 	exit ;;
 00 )
 	exit ;;
 * )
-	echo -e "该项超脱了天地之外！"
+	echo -e "\033[35m 该项超脱了天地之外！\033[0m"
 	sleep 1
 	home1 ;;
 esac
 }
 function game0 (){
-echo -e "\n\n\n\n\n"
-echo -e " 1   猜数字\n"
+toilet -f mono12 -F gay ZFX
+echo -e "\n\n"
+echo -e " \033[32m [1] \033[0m   \033[36m 游戏 \033[0m\n"
 sleep 0.016
-echo -e " 2   无\n"
+echo -e " \033[32m [2] \033[0m   \033[37m 更换清华源 \033[0m\n"
 sleep 0.016
-echo -e " 3   无\n"
+echo -e " \033[32m [3] \033[0m   \033[31m 扩展小键盘 \033[0m\n"
 sleep 0.016
-echo -e " 4   无\n"
+echo -e " \033[32m [4] \033[0m   \033[32m 获取储存权限 \033[0m\n"
 sleep 0.016
-echo -e " 5   无\n"
+echo -e " \033[32m [5] \033[0m   \033[33m termux启动密码 \033[0m\n"
 sleep 0.016
-echo -e " 6   mpv播放器\n"
+echo -e " \033[32m [6] \033[0m   \033[34m 搜索图片   \033[0m\n"
 sleep 0.016
-echo -e " 7   无\n"
+echo -e " \033[32m [7] \033[0m   \033[35m 下载壁纸 \033[0m\n"
 sleep 0.016
-echo -e " 8   neofetch\n"
+echo -e " \033[32m [8] \033[0m   \033[36m 下载网易云音乐   \033[0m\n"
 sleep 0.016
-echo -e " 9   纯文本浏览器\n"
+echo -e " \033[32m [9] \033[0m   \033[37m 无  \033[0m\n"
 sleep 0.016
-echo -e " 10  you-get\n"
+echo -e " \033[32m [10] \033[0m  \033[31m 无   \033[0m\n"
 sleep 0.016
-echo -e " 11   ip\n"
+echo -e " \033[32m [11] \033[0m   \033[32m 无  \033[0m\n"
 sleep 0.016
-echo -e " 12   更换termux问候语\n"
+echo -e " \033[32m [12] \033[0m   \033[33m 更换termux问候语 \033[0m\n"
 sleep 0.016
-echo -e " 13   adb fastboot\n"
+echo -e " \033[32m [13] \033[0m   \033[34m adb fastboot \033[0m\n"
 sleep 0.016
-echo -e " 0   返回\n\n\n"
+echo -e " \033[32m [0] \033[0m   \033[35m 返回 \033[0m\n\n\n"
 }
 function game1 (){
 cd ~
@@ -149,78 +189,107 @@ read -p "ZFX ~> " game
 case $game in
 1 )
 	sleep 1
-	hint ; echo -e "使用方法：输入 van\n 小火车🚂pkg install sl \n 彩虹猫🐱pkg install nyancat \n 贪吃蛇🐍pkg install nsnake \n 显示详细信息pkg install screenfetch" ; hint
+	hint ; echo -e "\033[36m 游戏列表，想要安装哪个游戏就\npkg install +绿色的字，（+不要输入）\033[0m" ; hint
 	sleep 3
-	pkg install -y wget
-	wget -O $PREFIX/bin/van https://nibazshab.github.io/404/when/van.sh
-	chmod +x $PREFIX/bin/van
+	echo -e "\n\n\n"
+	pkg search game
+	echo -e "\n\n\n"
 	game0 ; game1 ;;
 2 )
 	sleep 1
-	hint ; echo -e "   " ; hint
+	hint ; echo -e "\033[33m 官网：https://mirror.tuna.tsinghua.edu.cn/help/termux/\033[0m" ; hint
 	sleep 3
+	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
+	apt update && apt upgrade -y
 	game0 ; game1 ;;
 3 )
 	sleep 1
-	hint ; echo -e "     " ; hint
-	sleep 3
+	if test -d ~/.termux/ ; then
+		:
+	else
+		mkdir -p ~/.termux/
+	fi
+	echo -e "extra-keys = [['TAB','>','-','~','/','*','$'],['ESC','(','HOME','UP','END',')','PGUP'],['CTRL','[','LEFT','DOWN','RIGHT',']','PGDN']]" > ~/.termux/termux.properties
+	termux-reload-settings
 	game0 ; game1 ;;
 4 )
 	sleep 1
-	hint ; echo -e "     " ; hint
-	sleep 3
+	hint ; echo -e "\033[32m   获取储存权限   \033[0m" ; hint
+	termux-setup-storage
+	rm -rf /storage
+	ln -s /storage/emulated/0/ lyn
 	game0 ; game1 ;;
 5 )
 	sleep 1
+	hint ; echo -e "\033[33m   termux启动密码，执行'cd login && bash uninstall.sh'命令关闭程序   \033[0m" ; hint
 	sleep 3
+	pkg install -y python
+	pkg install -y wget
+	cd ~
+	mkdir login
+	cd login
+	wget -O login https://zfxlyn.github.io/termux/login/login
+	wget -O login.py https://zfxlyn.github.io/termux/login/login.py
+	wget -O setup.sh https://zfxlyn.github.io/termux/login/setup.sh
+	wget -O uninstall.sh https://zfxlyn.github.io/termux/login/uninstall.sh
+	wget -O old_login https://zfxlyn.github.io/termux/login/old_login
+	bash setup.sh
 	game0 ; game1 ;;
 6 )
 	sleep 1
-	hint ; echo -e "使用方法：请自行百度" ; hint
-	sleep 3
-	pkg install -y mpv
+	hint ; echo -e "\033[34m  输入：python picture.py \n搜索图片并下载百度图库\n保存位置为home/zfx/   \033[0m" ; hint
+	sleep 5
+	pkg install -y python
+	pkg install -y wget
+	pip install requests
+	wget -O picture.py https://zfxlyn.github.io/termux/baidupicture.py
+	python picture.py
 	game0 ; game1 ;;
 7 )
 	sleep 1
-	hint ; echo -e "     " ; hint
-	sleep 3
+	hint ; echo -e "\033[35m   输入：python bzm.py \n 下载高清壁纸分类较多！\n保存位置为home/zfx/   \033[0m" ; hint
+	sleep 5
+	pkg install -y python
+	pkg install -y wget
+	pip install requests
+	wget -O bzm.py https://zfxlyn.github.io/termux/bzm.py
+	python bzm.py
 	game0 ; game1 ;;
 8 )
 	sleep 1
-	hint ; echo -e "使用方法：输入 neofetch" ; hint
-	sleep 3
-	pkg install -y neofetch
+	hint ; echo -e "\033[36m  输入：python music.py \n 批量下载网易云音乐！ \n保存位置为home/zfx/   \033[0m" ; hint
+	sleep 5
+	pkg install -y python
+	pkg install -y wget
+	pip install requests
+	wget -O wymusic.py https://zfxlyn.github.io/termux/wymusic.py
+	python wymusic.py
 	game0 ; game1 ;;
 9 )
 	sleep 1
-	hint ; echo -e "名称：w3m\n使用方法：请自行百度" ; hint
+	hint ; echo -e "\033[37m       \033[0m" ; hint
 	sleep 3
-	pkg install -y w3m
 	game0 ; game1 ;;
 10 )
 	sleep 1
-	pkg install -y ffmpeg
-	pkg install -y python
-	pip3 install you-get
-	hint ; echo -e "-o /路径 -O 名称 -u 查看URL地址 -i 查看详情" ; hint
+	hint ; echo -e "\033[31m      \033[0m" ; hint
 	game0 ; game1 ;;
 11 )
 	sleep 1
-	if test -e $PREFIX/bin/curl ; then
-		:
-	else
-		pkg install -y curl
-	fi
-	ip -br -c addr ; curl myip.ipip.net
+	hint ; echo -e "\033[32m      \033[0m" ; hint
 	sleep 3
 	game0 ; game1 ;;
 12 )
 	sleep 1
-	echo -e "\n\n\n\n\n  ----------------------------------------------------\n\n             民生各有所乐兮，余独好修以为常\n             虽体解吾犹未变兮，岂余心之可惩\n\n\n               　　　／　　　 ／   | \n                　　 Γ￣￣￣￣ |  | \n                　　 |[]::　　 |   | \n                　　 |＿＿_＿＿|　|\n                　　 |[]::　　 |　 | \n                　　 |＿＿_＿＿|　| \n                ｶﾞﾗｯ |＿＿_＿＿|　 | \n                 .彡／(´･ω･)　／|　| \n                   　Γ￣￣￣￣ |　|／ \n                    Ｌ＿＿＿＿_|／\n\n\n" > $PREFIX/etc/motd
+	mv -f $PREFIX/etc/motd $PREFIX/etc/motd1
+	echo "toilet -f mono12 -F gay ZFXLYN" >> ~/.zshrc
+	source .zshrc
+	echo "toilet -f mono12 -F gay ZFXLYN" >> ~/.bashrc
+	source .bashrc
 	game0 ; game1 ;;
 13 )
 	sleep 1
-	hint ; echo -e "adb    fastboot" ; hint
+	hint ; echo -e "\033[33m adb和fastboot \033[0m" ; hint
 	sleep 3
 	pkg install -y unzip
 	pkg install -y wget
@@ -238,32 +307,33 @@ case $game in
 00 )
 	exit ;;
 * )
-	echo -e "该项超脱了天地之外！"
+	echo -e "\033[34m 该项超脱了天地之外！\033[0m"
 	sleep 1
 	game1 ;;
 esac
 }
 function work0 (){
-echo -e "\n\n\n\n\n"
-echo -e " 1   python\n"
+toilet -f mono12 -F gay ZFX
+echo -e "\n\n"
+echo -e " \033[32m [1] \033[0m   \033[35m python \033[0m\n"
 sleep 0.016
-echo -e " 2   java\n"
+echo -e " \033[32m [2] \033[0m   \033[36m java \033[0m\n"
 sleep 0.016
-echo -e " 3   go\n"
+echo -e " \033[32m [3] \033[0m   \033[37m go \033[0m\n"
 sleep 0.016
-echo -e " 4   c/c++\n"
+echo -e " \033[32m [4] \033[0m   \033[31m c/c++ \033[0m\n"
 sleep 0.016
-echo -e " 5   php\n"
+echo -e " \033[32m [5] \033[0m   \033[32m php \033[0m\n"
 sleep 0.016
-echo -e " 6   nodejs\n"
+echo -e " \033[32m [6] \033[0m   \033[33m nodejs \033[0m\n"
 sleep 0.016
-echo -e " 7   pip 清华源\n"
+echo -e " \033[32m [7] \033[0m   \033[34m pip 清华源 \033[0m\n"
 sleep 0.016
-echo -e " 8   npm 淘宝源\n"
+echo -e " \033[32m [8] \033[0m   \033[35m npm 淘宝源 \033[0m\n"
 sleep 0.016
-echo -e " 9   python_3.7\n"
+echo -e " \033[32m [9] \033[0m   \033[36m python_3.7 \033[0m\n"
 sleep 0.016
-echo -e " 0   返回\n\n\n"
+echo -e " \033[32m [0] \033[0m   \033[37m 返回 \033[0m\n\n\n"
 }
 function work1 (){
 cd ~
@@ -335,32 +405,33 @@ case $work in
 00 )
 	exit ;;
 * )
-	echo -e "该项超脱了天地之外！"
+	echo -e "\033[31m 该项超脱了天地之外！\033[0m"
 	sleep 1
 	work1 ;;
 esac
 }
 function library0 (){
-echo -e "\n\n\n\n\n"
-echo -e " 1   浏览器监控\n"
+toilet -f mono12 -F gay ZFX
+echo -e "\n\n"
+echo -e " \033[32m [1] \033[0m   \033[32m ip黑客 \033[0m\n"
 sleep 0.016
-echo -e " 2   atilo\n"
+echo -e " \033[32m [2] \033[0m   \033[33m atilo \033[0m\n"
 sleep 0.016
-echo -e " 3   annie视频下载工具\n"
+echo -e " \033[32m [3] \033[0m   \033[34m you-get视频下载器 \033[0m\n"
 sleep 0.016
-echo -e " 4   aria2下载器\n"
+echo -e " \033[32m [4] \033[0m   \033[35m 钓鱼网站 \033[0m\n"
 sleep 0.016
-echo -e " 5   命令行版百度云\n"
+echo -e " \033[32m [5] \033[0m   \033[36m 百度，蓝奏云提取码 \033[0m\n"
 sleep 0.016
-echo -e " 6   qrcode二维码\n"
+echo -e " \033[32m [6] \033[0m   \033[37m 手机轰炸机 \033[0m\n"
 sleep 0.016
-echo -e " 7   Toolss工具箱\n"
+echo -e " \033[32m [7] \033[0m   \033[31m Toolss工具箱 \033[0m\n"
 sleep 0.016
-echo -e " 8   bilibili挂机脚本\n"
+echo -e " \033[32m [8] \033[0m   \033[32m bilibili挂机脚本 \033[0m\n"
 sleep 0.016
-echo -e " 9   网易ncm格式转换\n"
+echo -e " \033[32m [9] \033[0m   \033[33m 网易ncm格式转换 \033[0m\n"
 sleep 0.016
-echo -e " 0   返回\n\n\n"
+echo -e " \033[32m [0] \033[0m   \033[34m 返回 \033[0m\n\n\n"
 }
 function library1 (){
 cd ~
@@ -368,96 +439,69 @@ read -p "ZFX ~> " library
 case $library in
 1 )
     sleep 3
-    hint ; echo -e "SocialFish      请使用'python SocialFish.py'命令执行" ; hint
+    hint ; echo -e "\033[35m 网络ip黑客 \033[0m" ; hint
     sleep 5
-    pkg install -y git
     pkg install -y python
-    pkg install -y php
-    pkg install -y curl
-    pkg install -y openssh
-    pkg install -y grep
-    pkg install -y wget
-    git clone https://github.com/An0nUD4Y/SocialFish
-    cd SocialFish
-    pip install -r requirements.txt
+    pkg install -y python2
+    wget -O attack.py https://zfxlyn.github.io/termux/attack.py
+    python2 attack.py
     library0 ; library1 ;;
 2 )
 	sleep 1
-	hint ; echo -e "atilo   images可用列表\n remove卸载   pull安装  clear清空" ; hint
+	hint ; echo -e "\033[36m atilo   images可用列表\n remove卸载   pull安装  clear清空 \033[0m" ; hint
 	curl -o $PREFIX/bin/atilo https://raw.githubusercontent.com/YadominJinta/atilo/master/atilo
 	chmod +x $PREFIX/bin/atilo
+	$PREFIX/bin/atilo
 	library0 ; library1 ;;
 3 )
 	sleep 1
-	hint ; echo -e "Annie视频下载工具" ; hint
-	sleep 3
-	pkg install -y golang
-	pkg install -y git
+	hint ; echo -e "\033[37m you-get视频下载器 \033[0m"
+	echo -e "\033[31m -o /路径 -O 名称 -u 查看URL地址 -i 查看详情 \033[0m\n\n\n" ; hint
+	sleep 5
 	pkg install -y ffmpeg
-	git clone https://github.com/iawia002/annie.git
-	cd ~/annie/
-	echo -e "$colorhint 编译时间较长，请耐心等待 $colorend"
-	sleep 2
-	GOOS=android GOARCH=arm64 go build -o annie main.go
-	mv -f annie $PREFIX/bin/
-	cd ~
-	rm -rf ~/annie
-	chmod -Rf 777 ~/go/
-	rm -rf ~/go/
+	pkg install -y python
+	pip3 install you-get
 	library0 ; library1 ;;
 4 )
 	sleep 1
-	hint ; echo -e "使用方法：输入 ~/aria2\n文件下载在 /sdcard/Download/\n" ; hint
+	hint ; echo -e "\033[32m 钓鱼网站\n下载失败请选择科学上网 \033[0m" ; hint
 	sleep 3
-	pkg install -y aria2
-	pkg install -y wget
-	if test -d /sdcard/Download/aria2/ ; then
-		if test -e /sdcard/Download/aria2/aria2.session ; then
-			:
-		else
-			touch /sdcard/Download/aria2/aria2.session
-		fi
-	else
-		mkdir -p /sdcard/Download/aria2/
-		touch /sdcard/Download/aria2/aria2.session
-	fi
-	if test -d ~/.config/ ; then
-		rm -rf ~/.config/aria2/
-	else
-		:
-	fi
-	mkdir -p ~/.config/aria2/
-	wget -O ~/.config/aria2/aria2.conf https://github.com/NibaZShab/NibaZShab.github.io/releases/download/09/09.conf
-	echo -e "echo \"rpc-key: 123456\"\nsleep 2\nam start -a android.intent.action.VIEW -d http://aria2.net\naria2c --conf-path=$HOME/.config/aria2/aria2.conf" > ~/aria2
-	chmod +x ~/aria2
+	pkg install -y git
+	pkg install -y python
+	git clone -b Termux-Support-Branch https://github.com/DarkSecDevelopers/HiddenEye.git
+	cd HiddenEye
+	python HiddenEye.py
 	library0 ; library1 ;;
 5 )
 	sleep 1
-	hint ; echo -e "使用方法：输入 ~/bdy\n百度云文件下载于 /sdcard/Download/\n项目地址：https://github.com/iikira/BaiduPCS-Go" ; hint
+	hint ; echo -e "\033[33m  使用方法：输入 bdp\n获取百度网盘和蓝奏云的提取码！！ \033[0m" ; hint
 	sleep 3
-	pkg install -y golang
-	pkg install -y git
-	git clone https://github.com/iikira/BaiduPCS-Go.git
-	cd ~/BaiduPCS-Go/
-	echo -e "$colorhint 编译时间较长，请耐心等待 $colorend"
-	sleep 2
-	GOOS=android GOARCH=arm64 go build -o bdy main.go
-	mv -f bdy ~
-	cd ~
-	rm -rf ~/BaiduPCS-Go/
-	chmod -Rf 777 ~/go/
-	rm -rf ~/go/
+	if [ -e "$PREFIX/bin/npm" ];then
+	npm install baidupankey -g
+	$PREFIX/bin/bdp
+	sleep 10
+	else
+	echo -e "\033[37m 请按0返回\n前往<编程环境配置>安装6号和8号 \033[0m"
+	sleep 7
+	fi
 	library0 ; library1 ;;
 6 )
 	sleep 1
-	hint ; echo -e "二维码！" ; hint
+	hint ; echo -e "\033[34m 短信 电话轰炸机 \033[0m" ; hint
 	sleep 3
+	pkg install -y wget
 	pkg install -y python
-	pip install qrcode
+	mkdir tbomb
+	cd tbomb
+	wget -O tbomb.sh https://zfxlyn.github.io/termux/TBomb/tbomb.sh
+	wget -O bomber.py https://zfxlyn.github.io/termux/TBomb/bomber.py
+	wget -O requirements.txt https://zfxlyn.github.io/termux/TBomb/requirements.txt
+	chmod +x TBomb.sh
+	bash tbomb.sh
 	library0 ; library1 ;;
 7 )
 	sleep 1
-	hint ; echo -e "Toolss工具箱" ; hint
+	hint ; echo -e "\033[35m Toolss工具箱 \033[0m" ; hint
 	sleep 3
 	pkg install -y wget
 	pkg install -y python
@@ -466,7 +510,7 @@ case $library in
 	library0 ; library1 ;;
 8 )
 	sleep 1
-	hint ; echo -e "bilibili安装指令" ; hint
+	hint ; echo -e "\033[36m bilibili安装指令 \033[0m" ; hint
 	sleep 3
 	pkg install -y curl
 	pkg install -y php
@@ -478,14 +522,14 @@ case $library in
 	cd ~/BiliHelper/
 	php composer.phar install
 	cd ~
-	hint ; echo -e "输入 vi ~/BiliHelper/conf/user.conf 填上自己的b站账号和密码即可" ; hint
+	hint ; echo -e "\033[37m 输入 vi ~/BiliHelper/conf/user.conf 填上自己的b站账号和密码即可 \033[0m" ; hint
 	sleep 3
 	echo -e "php ~/BiliHelper/index.php" > ~/bilibili
 	chmod +x ~/bilibili
 	library0 ; library1 ;;
 9 )
 	sleep 1
-	hint ; echo -e "网易音乐" ; hint
+	hint ; echo -e "\033[31m 网易音乐 \033[0m" ; hint
 	sleep 3
 	pkg install -y git
 	pkg install -y clang
@@ -506,7 +550,7 @@ case $library in
 00 )
 	exit ;;
 * )
-	echo -e "该项超脱了天地之外！"
+	echo -e "\033[32m 该项超脱了天地之外！\033[0m"
 	sleep 1
 	library1 ;;
 esac
