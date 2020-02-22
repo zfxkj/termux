@@ -1,9 +1,13 @@
 import requests
 import re
+import sys
 headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux armv7l) AppleWebKit/537.36 (KHTML, like Gecko) Raspbian Chromium/74.0.3729.157 Chrome/74.0.3729.157 Safari/537.36'
 }
+print("如果什么都不输入就视为退出")
 urlaq = input('请入链接：')
+if urlaq == "":
+        sys.exit("您已退出！")
 url_fg = 'https://music.163.com/playlist?id='
 id_fx = urlaq.split('=')[-1]
 url = url_fg + id_fx
