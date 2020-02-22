@@ -1,5 +1,6 @@
 import requests
 import re
+import sys
 print("如果什么都不输入视为退出\n")
 url_name = input('请输入搜索文字:')
 if url_name == ""
