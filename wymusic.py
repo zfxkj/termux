@@ -26,7 +26,7 @@ for ids2 in ids:
         
         try:
             music = requests.get(url2).content
-            with open('ZFX/' + name, 'wb')as f:
+            with open('zfx/music/' + name, 'wb')as f:
                 f.write(music)
         except Exception as e:
             print('错误:',e)
