@@ -58,8 +58,8 @@ case $home in
 	hint ; echo -e "\033[37m 准备更新\033[0m\n" ; hint
 	pkg install -y wget
 	cd zfx/
-	wget -O zfx https://zfxlyn.github.io/termux/zfx.sh
-	mv -f zfx $PREFIX/bin
+	wget -O zfx https://raw.githubusercontent.com/ZFXLYN/termux/master/zfx.sh
+	mv -f zfx $PREFIX/bin/
 	chmod +x $PREFIX/bin/zfx
 	exit
 	home0 ; home5 ;;
@@ -198,7 +198,6 @@ case $game in
 2 )
 	sleep 1
 	hint ; echo -e "\033[33m 清华源和官方源\033[0m \n \033[37m [1]  清华源\n [2]  官方源 \033[0m" ; hint
-	sleep 5
 	echo -e "\033[37m 请输入命令： \033[0m"
     read NUM
     if [ "$NUM" -eq "1" ]
@@ -238,7 +237,6 @@ case $game in
 5 )
 	sleep 1
 	hint ; echo -e "\033[33m   termux启动密码，或关闭程序   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
-	sleep 3
 	echo -e "\033[32m 请输入命令： \033[0m"
     read NUM
     if [ "$NUM" -eq "1" ]
@@ -248,11 +246,11 @@ case $game in
 	cd $PREFIX/tmp
 	mkdir login
 	cd login
-	wget -O login https://zfxlyn.github.io/termux/login/login
-	wget -O login.py https://zfxlyn.github.io/termux/login/login.py
-	wget -O setup.sh https://zfxlyn.github.io/termux/login/setup.sh
-	wget -O uninstall.sh https://zfxlyn.github.io/termux/login/uninstall.sh
-	wget -O old_login https://zfxlyn.github.io/termux/login/old_login
+	wget -O login https://raw.githubusercontent.com/ZFXLYN/termux/master/login/login
+	wget -O login.py https://raw.githubusercontent.com/ZFXLYN/termux/master/login/login.py
+	wget -O setup.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/login/setup.sh
+	wget -O uninstall.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/login/uninstall.sh
+	wget -O old_login https://raw.githubusercontent.com/ZFXLYN/termux/master/login/old_login
 	bash setup.sh
 	echo "完成"
 	sleep 3
@@ -270,7 +268,6 @@ case $game in
 6 )
 	sleep 1
 	hint ; echo -e "\033[34m  输入：python picture.py \n搜索图片并下载百度图库\n保存位置为home/zfx/   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
-	sleep 5
 	echo -e "\033[37m 请输入命令： \033[0m"
     read NUM
     if [ "$NUM" -eq "1" ]
@@ -278,7 +275,7 @@ case $game in
 	pkg install -y python
 	pkg install -y wget
 	pip install requests
-	wget -O picture.py https://zfxlyn.github.io/termux/baidupicture.py
+	wget -O picture.py https://raw.githubusercontent.com/ZFXLYN/termux/master/baidupicture.py
 	python picture.py
 	echo "完成"
 	sleep 3
@@ -295,7 +292,6 @@ case $game in
 7 )
 	sleep 1
 	hint ; echo -e "\033[35m   输入：python bzm.py \n 下载高清壁纸分类较多！\n保存位置为home/zfx/   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
-	sleep 5
 	echo -e "\033[37m 请输入命令： \033[0m"
     read NUM
     if [ "$NUM" -eq "1" ]
@@ -303,7 +299,7 @@ case $game in
 	pkg install -y python
 	pkg install -y wget
 	pip install requests
-	wget -O bzm.py https://zfxlyn.github.io/termux/bzm.py
+	wget -O bzm.py https://raw.githubusercontent.com/ZFXLYN/termux/master/bzm.py
 	python bzm.py
 	echo "完成"
 	sleep 3
@@ -320,7 +316,6 @@ case $game in
 8 )
 	sleep 1
 	hint ; echo -e "\033[36m  输入：python music.py \n 批量下载网易云音乐！ \n保存位置为home/zfx/   \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
-	sleep 5
 	echo -e "\033[37m 请输入命令： \033[0m"
     read NUM
     if [ "$NUM" -eq "1" ]
@@ -328,7 +323,7 @@ case $game in
 	pkg install -y python
 	pkg install -y wget
 	pip install requests
-	wget -O wymusic.py https://zfxlyn.github.io/termux/wymusic.py
+	wget -O wymusic.py https://raw.githubusercontent.com/ZFXLYN/termux/master/wymusic.py
 	python wymusic.py
 	echo "完成"
 	sleep 3
@@ -388,7 +383,6 @@ case $game in
 13 )
 	sleep 1
 	hint ; echo -e "\033[33m adb和fastboot \033[0m \n \033[37m [1]  安装\n [2]  卸载 \033[0m" ; hint
-	sleep 3
 	echo -e "\033[37m 请输入命令： \033[0m"
     read NUM
     if [ "$NUM" -eq "1" ]
@@ -656,7 +650,7 @@ case $library in
     sleep 5
     pkg install -y python
     pkg install -y python2
-    wget -O attack.py https://zfxlyn.github.io/termux/attack.py
+    wget -O attack.py https://raw.githubusercontent.com/ZFXLYN/termux/master/attack.py
     python2 attack.py
     echo "完成"
 	sleep 3
@@ -785,9 +779,9 @@ case $library in
 	pkg install -y python
 	mkdir tbomb
 	cd tbomb
-	wget -O tbomb.sh https://zfxlyn.github.io/termux/TBomb/tbomb.sh
-	wget -O bomber.py https://zfxlyn.github.io/termux/TBomb/bomber.py
-	wget -O requirements.txt https://zfxlyn.github.io/termux/TBomb/requirements.txt
+	wget -O tbomb.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/tbomb.sh
+	wget -O bomber.py https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/bomber.py
+	wget -O requirements.txt https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/requirements.txt
 	chmod +x tbomb.sh
 	bash tbomb.sh
 	echo "完成"
@@ -813,7 +807,7 @@ case $library in
 	sleep 3
 	pkg install -y wget
 	pkg install -y python
-	wget -O toolss.py https://zfxlyn.github.io/termux/Toolss.py
+	wget -O toolss.py https://raw.githubusercontent.com/ZFXLYN/termux/master/Toolss.py
 	python toolss.py
 	echo "完成"
 	sleep 3
