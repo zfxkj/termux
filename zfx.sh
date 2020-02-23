@@ -56,9 +56,9 @@ case $home in
 	library0 ; library1 ;;
 5 )
 	hint ; echo -e "\033[37m 准备更新\033[0m\n" ; hint
-	pkg install -y wget
+	pkg install -y curl
 	cd zfx/
-	wget -O zfx https://raw.githubusercontent.com/ZFXLYN/termux/master/zfx.sh
+	curl -o zfx https://raw.githubusercontent.com/ZFXLYN/termux/master/zfx.sh
 	mv -f zfx $PREFIX/bin/
 	chmod +x $PREFIX/bin/zfx
 	exit
@@ -204,13 +204,13 @@ case $game in
     then
 	sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux stable main@' $PREFIX/etc/apt/sources.list
 	pkg update && pkg upgrade -y
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     sed -i 's@^\(deb.*stable main\)$@#\1\ndeb https://termux.org/packages/ stable main@' $PREFIX/etc/apt/sources.list
 	pkg update && pkg upgrade -y
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -242,23 +242,23 @@ case $game in
     if [ "$NUM" -eq "1" ]
     then
     pkg install -y python
-	pkg install -y wget
+	pkg install -y curl
 	cd $PREFIX/tmp
 	mkdir login
 	cd login
-	wget -O login https://raw.githubusercontent.com/ZFXLYN/termux/master/login/login
-	wget -O login.py https://raw.githubusercontent.com/ZFXLYN/termux/master/login/login.py
-	wget -O setup.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/login/setup.sh
-	wget -O uninstall.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/login/uninstall.sh
-	wget -O old_login https://raw.githubusercontent.com/ZFXLYN/termux/master/login/old_login
+	curl -o login https://raw.githubusercontent.com/ZFXLYN/termux/master/login/login
+	curl -o login.py https://raw.githubusercontent.com/ZFXLYN/termux/master/login/login.py
+	curl -o setup.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/login/setup.sh
+	curl -o uninstall.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/login/uninstall.sh
+	curl -o old_login https://raw.githubusercontent.com/ZFXLYN/termux/master/login/old_login
 	bash setup.sh
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     elif [ "$NUM" -eq "2" ]
     then
     cd $PREFIX/tmp/login
     bash uninstall.sh
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -273,16 +273,16 @@ case $game in
     if [ "$NUM" -eq "1" ]
     then
 	pkg install -y python
-	pkg install -y wget
+	pkg install -y curl
 	pip install requests
-	wget -O picture.py https://raw.githubusercontent.com/ZFXLYN/termux/master/baidupicture.py
+	curl -o picture.py https://raw.githubusercontent.com/ZFXLYN/termux/master/baidupicture.py
 	python picture.py
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf picture.py
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -297,16 +297,16 @@ case $game in
     if [ "$NUM" -eq "1" ]
     then
 	pkg install -y python
-	pkg install -y wget
+	pkg install -y curl
 	pip install requests
-	wget -O bzm.py https://raw.githubusercontent.com/ZFXLYN/termux/master/bzm.py
+	curl -o bzm.py https://raw.githubusercontent.com/ZFXLYN/termux/master/bzm.py
 	python bzm.py
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf bzm.py
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -324,16 +324,16 @@ case $game in
     mkdir music
     cd ~
 	pkg install -y python
-	pkg install -y wget
+	pkg install -y curl
 	pip install requests
-	wget -O wymusic.py https://raw.githubusercontent.com/ZFXLYN/termux/master/wymusic.py
+	curl -o wymusic.py https://raw.githubusercontent.com/ZFXLYN/termux/master/wymusic.py
 	python wymusic.py
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf wymusic.py
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -368,7 +368,7 @@ case $game in
 	source .zshrc
 	echo "\n toilet -f mono12 -F gay ZFXLYN" >> ~/.bashrc
 	source .bashrc
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
@@ -376,7 +376,7 @@ case $game in
     mv -f $PREFIX/tmp/.zshrc ~
     mv -f $PREFIX/tmp/.bashrc ~
     mv -f $PREFIX/etc/motd1 $PREFIX/etc/motd
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -399,13 +399,13 @@ case $game in
 	mv -f ~/fastboot $PREFIX/bin/
 	chmod +x $PREFIX/bin/adb
 	chmod +x $PREFIX/bin/fastboot
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf $PREFIX/bin/adb
     rm -rf $PREFIX/bin/fastboot
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -454,12 +454,12 @@ case $work in
     if [ "$NUM" -eq "1" ]
     then
 	pkg install -y python
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     pkg uninstall -y python
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -474,12 +474,12 @@ case $work in
     if [ "$NUM" -eq "1" ]
     then
 	pkg install -y golang
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     pkg uninstall -y golang
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -494,12 +494,12 @@ case $work in
     if [ "$NUM" -eq "1" ]
     then
 	pkg install -y clang
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     pkg uninstall -y clang
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -514,12 +514,12 @@ case $work in
     if [ "$NUM" -eq "1" ]
     then
 	pkg install -y php
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     pkg uninstall -y php
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -534,12 +534,12 @@ case $work in
     if [ "$NUM" -eq "1" ]
     then
 	pkg install -y nodejs
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     pkg uninstall -y nodejs
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -560,7 +560,7 @@ case $work in
 	else
 		echo -e "请先安装 python 环境"
 	fi
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
@@ -569,7 +569,7 @@ case $work in
 	else
 	    echo -e "请先安装 python 环境"
 	fi
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -588,7 +588,7 @@ case $work in
 	else
 		echo -e "请先安装 nodejs 环境"
 	fi
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
@@ -597,7 +597,7 @@ case $work in
 	else
 		echo -e "请先安装 nodejs 环境"
 	fi
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -653,14 +653,14 @@ case $library in
     sleep 5
     pkg install -y python
     pkg install -y python2
-    wget -O attack.py https://raw.githubusercontent.com/ZFXLYN/termux/master/attack.py
+    curl -o attack.py https://raw.githubusercontent.com/ZFXLYN/termux/master/attack.py
     python2 attack.py
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     elif [ "$NUM" -eq "2" ]
     then
     rm -rf attack.py
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -678,12 +678,12 @@ case $library in
 	curl -o $PREFIX/bin/atilo https://raw.githubusercontent.com/YadominJinta/atilo/master/atilo
 	chmod +x $PREFIX/bin/atilo
 	$PREFIX/bin/atilo
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf $PREFIX/bin/atilo
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -702,12 +702,12 @@ case $library in
 	pkg install -y ffmpeg
 	pkg install -y python
 	pip3 install you-get
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     pip3 uninstall -y you-get
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -728,12 +728,12 @@ case $library in
 	git clone -b Termux-Support-Branch https://github.com/DarkSecDevelopers/HiddenEye.git
 	cd HiddenEye
 	python HiddenEye.py
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf HiddenEye.py
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -757,12 +757,12 @@ case $library in
 	echo -e "\033[37m 请按0返回\n前往<编程环境配置>安装6号和8号 \033[0m"
 	sleep 7
 	fi
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf $PREFIX/bin/bdp
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -778,21 +778,21 @@ case $library in
     if [ "$NUM" -eq "1" ]
     then
 	sleep 3
-	pkg install -y wget
+	pkg install -y curl
 	pkg install -y python
 	mkdir tbomb
 	cd tbomb
-	wget -O tbomb.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/tbomb.sh
-	wget -O bomber.py https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/bomber.py
-	wget -O requirements.txt https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/requirements.txt
+	curl -o tbomb.sh https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/tbomb.sh
+	curl -o bomber.py https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/bomber.py
+	curl -o requirements.txt https://raw.githubusercontent.com/ZFXLYN/termux/master/TBomb/requirements.txt
 	chmod +x tbomb.sh
 	bash tbomb.sh
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf tbomb
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -808,16 +808,16 @@ case $library in
     if [ "$NUM" -eq "1" ]
     then
 	sleep 3
-	pkg install -y wget
+	pkg install -y curl
 	pkg install -y python
-	wget -O toolss.py https://raw.githubusercontent.com/ZFXLYN/termux/master/Toolss.py
+	curl -o toolss.py https://raw.githubusercontent.com/ZFXLYN/termux/master/Toolss.py
 	python toolss.py
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf toolss.py
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
@@ -847,12 +847,12 @@ case $library in
 	sleep 3
 	echo -e "php ~/BiliHelper/index.php" > ~/bilibili
 	chmod +x ~/bilibili
-	echo "完成"
+	echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
 	elif [ "$NUM" -eq "2" ]
     then
     rm -rf bilibili BiliHelper
-    echo "完成"
+    echo "执行完成，并不代表执行成功如果失败请重试！"
 	sleep 3
     else
         echo "输入错误！"
