@@ -45,7 +45,7 @@ def xh(url, file_name, start):
         i=i+1
         try:
             picture = requests.get(u).content
-            with open('ZFX/' + fn, 'wb')as f:
+            with open('zfx/' + fn, 'wb')as f:
                 f.write(picture)
         except Exception as e:
             print('错误:',e)
