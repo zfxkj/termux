@@ -1,12 +1,12 @@
-Package: when
-Version: 9.2
-Maintainer: NibaZShab nibazshab@gmail.com
-Installed-Size: 13765
-Homepage: https://nibazshab.github.io
+Package: zfx
+Version: 1.0
+Maintainer: zfx zfx1314521@gmail.com
+Installed-Size: 1
+Homepage: https://zfxlyn.github.io
 Priority: optional
 Architecture: aarch64
 Description: toolbox for termux
-Filename: dists/termux/extras/binary-aarch64/when.deb
+Filename: termux/zfx/binary-aarch64/zfx
 Size: 4612
 MD5Sum: 17afd10bcda58119d4f61234129c133c
 SHA1: 4ccfecd69e6a28a7935c9b7dfe8f81fc6bf21f9d
