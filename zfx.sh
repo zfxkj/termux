@@ -320,6 +320,9 @@ case $game in
     read NUM
     if [ "$NUM" -eq "1" ]
     then
+    cd zfx
+    mkdir music
+    cd ~
 	pkg install -y python
 	pkg install -y wget
 	pip install requests
