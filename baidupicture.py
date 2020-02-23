@@ -18,7 +18,7 @@ for tp1 in tp:
         #name = tp1.split('/')[-1]
         suffix = tp1.split('.')[-1]
         name = url_name + "{}.{}".format(i, suffix)
-        with open('ZFX/' + name, 'wb') as f:
+        with open('zfx/' + name, 'wb') as f:
             f.write(imget)
         i=i+1
     except:
