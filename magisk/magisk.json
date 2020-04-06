@@ -2,7 +2,7 @@
   "app": {
     "version": "72f6770d",
     "versionCode": "278",
-    "link": "https://pan.cccyun.cc/down.php/aa87bd5ec3aad30941ab38b3f53cef11.apk",
+    "link": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magisk.apk",
     "note": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magiskapk.md"
   },
   "magisk": {
