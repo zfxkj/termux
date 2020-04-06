@@ -1,7 +1,7 @@
 {
   "app": {
     "version": "72f6770d",
-    "versionCode": "278",
+    "versionCode": "282",
     "link": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magisk.apk",
     "note": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magiskapk.md"
   },
