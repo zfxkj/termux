@@ -8,6 +8,6 @@ chmod +x $PREFIX/bin/zfx <br>
 启动命令：zfx
 
 
-#magisk
+# magisk
 更新通道：  
 https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magisk.json
