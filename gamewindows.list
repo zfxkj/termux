@@ -13,7 +13,6 @@
 [手机管家]=com.miui.securitycenter
 [微信]=com.tencent.mm
 [腾讯视频]=com.tencent.qqlive
-[相机]=com.android.camera
 [Chrome]=com.android.chrome
 [QQ]=com.tencent.mobileqq
 [TIM]=com.tencent.tim
@@ -24,4 +23,11 @@
 [网易云音乐]=com.netease.cloudmusic
 [哔哩哔哩]=tv.danmaku.bili
 [支付宝]=com.eg.android.AlipayGphone
+[王者荣耀]=com.tencent.tmgp.sgame
+[QQ飞车]=com.tencent.tmgp.speedmobile
+[穿越火线：枪战王者]=com.tencent.tmgp.cf
+[钉钉]=com.alibaba.android.rimet
+[QQ音乐]=com.tencent.qqmusic
+[酷狗音乐]=com.kugou.android
+
 
