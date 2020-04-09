@@ -6,11 +6,11 @@
     "note": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magiskapk.md"
   },
   "magisk": {
-    "version": "20.4",
-    "versionCode": "20400",
-    "link": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/Magisk-20.4(20400).zip",
+    "version": "ef9d077c",
+    "versionCode": "20401",
+    "link": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/Magisk-ef9d077c(20401).zip",
     "note": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magiskzip.md",
-    "md5": "9503fc692e03d60cb8897ff2753c193f"
+    "md5": "eb913194892188604c38624535021919"
   },
   "uninstaller": {
     "link": "https://pan.cccyun.cc/down.php/96398e432a1e6977256e1a8a193e3424.zip"
