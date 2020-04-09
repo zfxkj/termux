@@ -6,15 +6,11 @@
 
 ##############################
 #[Magisk Manager]=com.topjohnwu.magisk
-[MT管理器]=bin.mt.plus.canary
+[MT管理器]=bin.mt.plus
 #[EdXposed Manager]=org.meowcat.edxposed.manager
-##############################
-
-[手机管家]=com.miui.securitycenter
-[微信]=com.tencent.mm
+#############################
 [腾讯视频]=com.tencent.qqlive
 [Chrome]=com.android.chrome
-[QQ]=com.tencent.mobileqq
 [TIM]=com.tencent.tim
 [酷安]=com.coolapk.market
 [设置]=com.android.settings
