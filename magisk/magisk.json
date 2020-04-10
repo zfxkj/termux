@@ -1,16 +1,16 @@
 {
   "app": {
-    "version": "5537b083",
-    "versionCode": "282",
+    "version": "72f6770d",
+    "versionCode": "278",
     "link": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magisk.apk",
     "note": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magiskapk.md"
   },
   "magisk": {
-    "version": "f7142e69",
-    "versionCode": "20308",
-    "link": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/Magisk-20.3.8.zip",
+    "version": "ef9d077c",
+    "versionCode": "20401",
+    "link": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/Magisk-ef9d077c(20401).zip",
     "note": "https://raw.githubusercontent.com/ZFXLYN/termux/master/magisk/magiskzip.md",
-    "md5": "73bfb98bcee4a5601a4e506c2f77c130"
+    "md5": "eb913194892188604c38624535021919"
   },
   "uninstaller": {
     "link": "https://pan.cccyun.cc/down.php/96398e432a1e6977256e1a8a193e3424.zip"
